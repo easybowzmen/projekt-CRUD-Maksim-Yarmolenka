@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Watched Movies</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Input -->
+    <section class="left">
+      <h2>Add Movie</h2>
+      <form id="form">
+        <label>Title
+          <input name="title" required>
+        </label>
+        <label>Description
+          <textarea name="description" placeholder="Short description"></textarea>
+        </label>
+        <label>Rating
+          <input name="rating" type="number" min="1" max="10" required>
+        </label>
+        <label>Watched Date
+          <input name="watched_date" type="date" required>
+        </label>
+        <label>Genre
+          <input name="genre" placeholder="e.g. drama, sci-fi" required>
+        </label>
+        <button>Add Movie</button>
+      </form>
+    </section>
+    <!-- BD -->
+    <section class="right">
+      <h2>Watched Movies List</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Rating</th>
+            <th>Watched Date</th>
+            <th>Genre</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </div>
+  <script src="client.js"></script>
+</body>
+</html>

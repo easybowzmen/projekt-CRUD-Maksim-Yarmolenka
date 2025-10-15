@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS movies (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title TEXT NOT NULL,
+  description TEXT,
+  rating INTEGER NOT NULL CHECK (rating BETWEEN 1 AND 10),
+  watched_date TEXT NOT NULL,
+  genre TEXT NOT NULL
+);
