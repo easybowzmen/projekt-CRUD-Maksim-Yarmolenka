@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const Database = require('better-sqlite3');
@@ -7,10 +8,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const dbPath = path.join(__dirname, 'data.db');
+const dbPath = process.env.DATABASE_URL || path.join(__dirname, 'data.db');
 const db = new Database(dbPath);
 db.pragma('foreign_keys = ON');
-
 
 
 app.get('/api/movies', (req, res) => {
@@ -65,4 +65,4 @@ app.put('/api/movies/:id', (req, res) => {
 app.use('/', express.static(path.join(__dirname, 'frontend')));
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running: http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
