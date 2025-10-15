@@ -1,4 +1,4 @@
-# CRUD Project – My Watched Movies
+# CRUD Project - My Watched Movies
 
 Simple full-stack web application for managing watched movies.  
 It allows users to **add**, **view**, **edit**, and **delete** movie entries.  
