@@ -4,5 +4,7 @@ CREATE TABLE IF NOT EXISTS movies (
   description TEXT,
   rating INTEGER NOT NULL CHECK (rating BETWEEN 1 AND 10),
   watched_date TEXT NOT NULL,
-  genre TEXT NOT NULL
+  genre TEXT NOT NULL,
+  director TEXT,
+  duration INTEGER CHECK (duration > 0)
 );

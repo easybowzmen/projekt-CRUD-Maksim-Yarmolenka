@@ -38,3 +38,8 @@ npm run migrate
 npm run dev
 ```
 Then open http://localhost:3000 in your browser.
+
+
+##📜 Changelog
+
+v2.0 – Added new fields director and duration, updated frontend, backend, and database.
