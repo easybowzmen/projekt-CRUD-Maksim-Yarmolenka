@@ -15,6 +15,8 @@ async function load() {
       <td>${m.rating}</td>
       <td>${m.watched_date}</td>
       <td>${m.genre}</td>
+      <td>${m.director || ''}</td>
+      <td>${m.duration || ''}</td>
       <td><button data-id="${m.id}">Delete</button></td>
     `;
     tbody.appendChild(row);
@@ -26,6 +28,7 @@ form.addEventListener('submit', async (e) => {
   const fd = new FormData(form);
   const body = Object.fromEntries(fd.entries());
   body.rating = Number(body.rating);
+  body.duration = Number(body.duration);
 
   const res = await fetch(api, {
     method: 'POST',
@@ -33,10 +36,10 @@ form.addEventListener('submit', async (e) => {
     body: JSON.stringify(body)
   });
 
- if (!res.ok) {
-  alert('Failed to add movie. Please check the fields.');
-  return;
-}
+  if (!res.ok) {
+    alert('Failed to add movie. Please check the fields.');
+    return;
+  }
 
   form.reset();
   load();

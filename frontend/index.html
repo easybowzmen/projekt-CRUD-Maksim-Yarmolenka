@@ -26,9 +26,16 @@
         <label>Genre
           <input name="genre" placeholder="e.g. drama, sci-fi" required>
         </label>
+        <label>Director
+          <input name="director" placeholder="e.g. Christopher Nolan">
+        </label>
+        <label>Duration (minutes)
+          <input name="duration" type="number" min="1" placeholder="e.g. 120">
+        </label>
         <button>Add Movie</button>
       </form>
     </section>
+
     <!-- BD -->
     <section class="right">
       <h2>Watched Movies List</h2>
@@ -41,6 +48,8 @@
             <th>Rating</th>
             <th>Watched Date</th>
             <th>Genre</th>
+            <th>Director</th>
+            <th>Duration</th>
             <th>Delete</th>
           </tr>
         </thead>
@@ -48,6 +57,7 @@
       </table>
     </section>
   </div>
+
   <script src="client.js"></script>
 </body>
 </html>
