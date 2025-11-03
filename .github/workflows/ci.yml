@@ -17,11 +17,11 @@ jobs:
       - name: Start server and wait
         run: |
           nohup npm run start >/dev/null 2>&1 &
-          npx wait-on http://localhost:10000/health
+          npx wait-on http://localhost:3000/health
       - name: Run tests
         env:
           BACKEND_API_KEY: dev123
-          BASE_URL: http://localhost:10000
+          BASE_URL: http://localhost:3000
         run: npm test
 
   deploy_prod:
