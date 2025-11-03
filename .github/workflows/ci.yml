@@ -1,0 +1,36 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run migrate
+      - name: Start server
+        run: |
+          nohup npm run start >/dev/null 2>&1 &
+          sleep 2
+      - name: Smoke test
+        run: curl -f http://localhost:10000/health
+      - name: Run tests
+        env:
+          BACKEND_API_KEY: dev123
+          BASE_URL: http://localhost:10000
+        run: npm test
+
+  deploy_prod:
+    needs: build_and_test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Render
+        run: curl -X POST "$RENDER_DEPLOY_HOOK_URL"
+        env:
+          RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
