@@ -115,3 +115,14 @@ td button:hover {
     height: auto;
   }
 }
+
+.error-box {
+  background: #7f1d1d;
+  border: 1px solid #b91c1c;
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.3;
+}
