@@ -14,12 +14,10 @@ jobs:
           node-version: 20
       - run: npm ci
       - run: npm run migrate
-      - name: Start server
+      - name: Start server and wait
         run: |
           nohup npm run start >/dev/null 2>&1 &
-          sleep 10
-      - name: Smoke test
-        run: curl -f http://localhost:10000/health
+          npx wait-on http://localhost:10000/health
       - name: Run tests
         env:
           BACKEND_API_KEY: dev123
